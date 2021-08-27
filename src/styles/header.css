@@ -1,0 +1,38 @@
+header {
+    width:100%;
+    min-height: 55px;
+    background-color: #fff;
+    display:flex;
+    align-items: center;
+    box-shadow: 2px 2px 5px rgba(0,0,0,.1);
+    margin-bottom: 30px;
+    z-index: 99;
+    font-family: 'Bebas Neue', cursive;
+}
+
+.icon {
+    width: 100px;
+    color: rgb(53, 53, 53);
+    font-size: 17px;
+    letter-spacing:2px;
+    padding-left: 12px;
+}
+
+.search {
+    margin-left: 5px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.search > input {
+    height: 70%;
+    width: 98%;
+    border: none;
+    border-radius: 3px;
+    outline-style: none;
+    padding-left: 10px;
+    background-color: #F9F9F9;
+    box-shadow: 1px 1px 3px rgba(0,0,0,.1);
+}
