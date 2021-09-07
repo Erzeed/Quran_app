@@ -6486,7 +6486,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-var baseUrl = "http://api.alquran.cloud/v1";
+var baseUrl = "https://api.alquran.cloud/v1";
 var surah = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
     var resp, data;
