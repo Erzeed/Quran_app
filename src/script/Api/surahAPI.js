@@ -2,7 +2,7 @@ import 'regenerator-runtime/runtime'
 import axios from "axios"
 import '../../Components/cardData.js'
 
-const baseUrl  = `http://api.alquran.cloud/v1`;
+const baseUrl  = `https://api.alquran.cloud/v1`;
 export const surah = async () => {
     try {
         const resp = await axios.get(`${baseUrl}/surah`);
