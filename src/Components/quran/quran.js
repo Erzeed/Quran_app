@@ -1,6 +1,6 @@
-
-import play from '../img/icons/play-line.png';
-import pause from '../img/icons/pause-line.png';
+import * as style from './quran.css'
+import play from '../../img/icons/play-line.png';
+import pause from '../../img/icons/pause-line.png';
 import {Howl} from 'howler';
 class quran extends HTMLElement {
     constructor(){
@@ -110,137 +110,7 @@ class quran extends HTMLElement {
     render(){
         this.shadowDOM.innerHTML = `
             <style>
-
-                * {
-                    box-sizing: border-box;
-                    padding: 0;
-                    margin: 0;
-                }
-                .quran {
-                    display: flex;
-                    flex-direction: column;
-                    max-width: 80vw;
-                    max-height: 80vh;
-                    min-height: 80vh;
-                    background-color: #fff;
-                    font-family: 'Andada Pro', serif;
-                    
-                    border-radius: 10px;
-                    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.05);
-                    overflow-x :scroll;
-                    position:relative;
-                }
-                .quran > .quran_header {
-                    background-color: #fff;
-                    display: flex;
-                    justify-content: space-between;
-                    padding:10px;
-                }
-                
-                .quran > .quran_header > * {
-                    border: 1px solid rgba(0, 0, 0, 0.1);
-                    width: 150px;
-                    height: 35px;
-                    flex-direction: column;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    border-radius: 10px;
-                }
-                
-                .quran_header > .quran_name p:nth-child(2){
-                    color: rgba(0, 0, 0, 0.6);
-                    font-size: 14px;
-                }
-                .quran > .quran_main {
-                    font-family: 'Scheherazade', serif;
-                    height: 80vh;
-                    overflow-x:scroll;
-                    padding: 0 30px 0 30px;
-                }
-                .quran > .quran_main > .header_ayat {
-                    height: 100px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-                .ayat {
-                    line-height: 60px;
-                    text-align: justify;
-                    direction: rtl;
-                }
-                .ayat > p > span {
-                    font-size: 27px;
-                    letter-spacing:2px;
-                    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-                    
-                }
-                .audio-quran {
-                    width: 100%;
-                    height: 50px;
-                    display:flex;
-                    justify-content: center;
-                    position:sticky;
-                    bottom:0;
-                    right:0;
-                    border-radius: 0 0 10px 10px;
-                    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-                    background-color:#368B85;
-                }
-                .audio-quran > button {
-                    border:none;
-                    background-color: transparent;
-                    cursor: pointer;
-                }
-                .audio-quran > button > img {
-                    width: 40px;
-                    height: 40px;
-                }
-                .active {
-                    color: #28C76F;
-                }
-                @media only screen and (max-width: 414px) {
-                    /* For smarytphone: */
-                    .quran_header > .quran_name{
-                        display:none;
-                    }
-                    .quran_header > .quran_jumlahayat{
-                        display:none;
-                    }
-                    .quran > .quran_header {
-                        display: flex;
-                        justify-content:center;
-                    }
-                    .quran > .quran_main > .header_ayat {
-                        font-size: 15px;
-                    }
-                    .ayat > p > span {
-                        font-size: 20px;
-                    }
-                  }
-                @media only screen and (max-width: 375px) {
-                    /* For smarytphone: */
-                    .quran > .quran_header {
-                        display: flex;
-                        justify-content:center;
-                    }
-                    .quran_header > .quran_name{
-                        display:none;
-                    }
-                    .quran_header > .quran_jumlahayat{
-                        display:none;
-                    }
-                    .quran > .quran_main > .header_ayat > h1 {
-                        font-size: 23px;
-                    }
-                    .ayat > p > span {
-                        font-size: 22px;
-                        letter-spacing:0;
-                    }
-                    .ayat {
-                        line-height: 45px;
-                    }
-                  }
+                ${style}
             </style>
             <div class="quran">
                 <div class="quran_header">

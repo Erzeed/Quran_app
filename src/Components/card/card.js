@@ -1,4 +1,5 @@
-import './cardData.js'
+import '../cardData/cardData'
+import * as style from './card.css'
 
 class card extends HTMLElement {
     constructor(){
@@ -14,15 +15,8 @@ class card extends HTMLElement {
 
     render(){
         this.shadowDOM.innerHTML = `
-
         <style>
-            :host {
-                width: 80vw;
-                height: 90%;
-                display: flex;
-                flex-wrap: wrap;
-                justify-content:center;
-            }
+            ${style}
         </style>
         `
         this._surah.forEach(el => {

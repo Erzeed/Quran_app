@@ -1,3 +1,5 @@
+import * as style from './error.css'
+
 class err extends HTMLElement {
     constructor(){
         super()
@@ -11,11 +13,7 @@ class err extends HTMLElement {
     render(){
         this.shadowDOM.innerHTML = `
         <style>
-        .err {
-            padding: 10px 30px;
-            box-shadow: 0 0 10px rgb(255, 185, 185);
-            margin-top: calc(50vh - 150px);
-        }
+            ${style}
         </style>
         <div class="err">
             <h3>Mohon cek jaringan anda</h3>
