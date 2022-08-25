@@ -6,7 +6,6 @@ class quran extends HTMLElement {
     constructor(){
         super()
         this.shadowDOM = this.attachShadow({mode: "open"})
-        
     }
     
     set ayat(ayat){
@@ -19,11 +18,11 @@ class quran extends HTMLElement {
         let ayat = this.shadowDOM.querySelector('.ayatt')
         this._ayatt.map(el => {
             let numb = el.numberInSurah;
-            if(numb == 1) {
-                const filterD = el.text.substring(39)
-                const span = `<span class="surah_${numb}">${filterD} {${numb}} </span>`;
-                if(filterD == '') {
-                    const txt = `<span class="surah_${numb}">${filterD}</span>`
+            if(numb === 1) {
+                const filterData = el.text.substring(39)
+                const span = `<span class="surah_${numb}">${filterData} {${numb}} </span>`;
+                if(filterData == '') {
+                    const txt = `<span class="surah_${numb}">${filterData}</span>`
                     ayat.innerHTML += txt
                 }else {
                     ayat.innerHTML += span
@@ -47,13 +46,13 @@ class quran extends HTMLElement {
 
     playSong(){
         let playList = this.playList()
-        let i = sessionStorage.getItem('i')
-        let b = sessionStorage.getItem('i')
+        let numberSurah = sessionStorage.getItem('i')
+        let tempNumberSurah = sessionStorage.getItem('i')
         const lastIdSong = this._ayatt[this._ayatt.length - 1].number
         const imgPause = this.shadowDOM.querySelector('button .pause')
         
         const sound = new Howl({
-            src: [playList[i]],
+            src: [playList[numberSurah]],
             html5: true,
             volume: 1
         });
@@ -62,11 +61,11 @@ class quran extends HTMLElement {
             sound.pause()
         })
         sound.on('play',() => {
-            b++
-            if (b > 0){
+            tempNumberSurah++
+            if (tempNumberSurah > 0){
                 try{
-                    const addClassActive = this.shadowDOM.querySelector(`.surah_${b}`)
-                    const removeClassActive = this.shadowDOM.querySelector(`.surah_${i}`)
+                    const addClassActive = this.shadowDOM.querySelector(`.surah_${tempNumberSurah}`)
+                    const removeClassActive = this.shadowDOM.querySelector(`.surah_${numberSurah}`)
                     addClassActive.classList.add('active')
                     removeClassActive.classList.remove('active')
                 }catch(err){
@@ -75,10 +74,10 @@ class quran extends HTMLElement {
             }
         })
         sound.on('end',() => {
-            i++
-            sessionStorage.setItem('i',`${i}`)
+            numberSurah++
+            sessionStorage.setItem('i',`${numberSurah}`)
             this.playSong()
-            if(i == lastIdSong){
+            if(numberSurah === lastIdSong){
                 const removeClassActive = this.shadowDOM.querySelector(`.surah_${lastIdSong}`)
                 removeClassActive.classList.remove('active')
                 sessionStorage.clear('i')
@@ -89,18 +88,17 @@ class quran extends HTMLElement {
         return sound
     }
 
-    audioControl(e) {
-        const target = e.target.classList
+    audioControl(button) {
         const img = this.shadowDOM.querySelector('button .play')
         const imgPause = this.shadowDOM.querySelector('button .pause')
-        const i = sessionStorage.getItem('i')
-        i == null ? sessionStorage.setItem('i',0) : '';
+        const numberSurah = sessionStorage.getItem('i')
+        numberSurah === null ? sessionStorage.setItem('i',0) : '';
 
-        if(target == 'play'){
+        if(button == 'play'){
             img.src = pause
             img.classList.value = 'pause'
             this.playSong()
-        }else if(target == 'pause'){
+        }else if(button == 'pause'){
             imgPause.src = play
             imgPause.classList.value = 'play'
             
@@ -142,7 +140,7 @@ class quran extends HTMLElement {
         `    
         this.mapping()
         this.playList()
-        this.shadowDOM.querySelector('button').addEventListener('click',(e) => this.audioControl(e))
+        this.shadowDOM.querySelector('button').addEventListener('click',(e) => this.audioControl(e.target.classList))
     }
 }
 

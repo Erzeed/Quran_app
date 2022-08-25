@@ -14,21 +14,6 @@ module.exports = {
     //loader
     module: {
         rules: [
-            // {
-            //     test: /\.css$/,
-            //     use: [
-            //             {
-            //                 loader: "style-loader"
-            //             },
-            //             {
-            //                 loader: ['to-string-loader', 'css-loader']
-            //                 ,
-            //             options: {
-            //               esModule: false
-            //       }     
-            //             }
-            //     ]
-            // },
             {
               test: /\.css$/i,
               exclude: /styles/,
@@ -75,12 +60,14 @@ module.exports = {
         new HtmlWebpackPlugin({
             title:'home',
             template: "./src/template.html",
-            filename: "index.html"
+            filename: "index.html",
+            favicon: './src/img/icons/favicon.ico'
         }),
         new HtmlWebpackPlugin({
             title:'quran',
             template: "./src/quran.html",
-            filename: "quran/index.html"
+            filename: "quran/index.html",
+            favicon: './src/img/icons/favicon.ico'
         }),
         new MiniCssExtractPlugin()
     ]

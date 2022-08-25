@@ -16,9 +16,9 @@ const main = () => {
     
     const showData = async () => {
         try {
-            const _data = await surah();
-            if(_data != undefined){
-                const {data} = _data
+            const dataSurah = await surah();
+            if(dataSurah != undefined){
+                const {data} = dataSurah
                 card.surat = data
                 searchText.addEventListener('change',() => {
                     search(data)
@@ -38,8 +38,8 @@ const main = () => {
 
     const showJuz = async () =>{
         try {
-            const _data = await juz();
-            const {data} = _data
+            const dataJuz = await juz();
+            const {data} = dataJuz
             quran.ayat = data
             if(data){
                 loading.style.display = "none"

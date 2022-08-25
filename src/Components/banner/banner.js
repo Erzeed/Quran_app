@@ -9,10 +9,9 @@ class banner extends HTMLElement{
     }
 
     connectedCallback() {
-            this.render()
+        this.render()
     }
     render(){
-
         this.shadowDOM.innerHTML = `
         <style>
             ${styles}
@@ -23,7 +22,7 @@ class banner extends HTMLElement{
                     <h1>Baca Al-Quran</h1>
                 </div>
                 <div class="img">
-                        <img src="${quran}" alt="">
+                    <img src="${quran}" alt="al-quran">
                 </div>
             </div>
         `
