@@ -2,7 +2,7 @@ import { surah,juz } from "../Api/surahAPI";
 import '../../Components/card.js'
 import '../../Components/quran.js'
 import '../../Components/loading.js'
-import '../../Components/banner.js'
+import '../../Components/banner/banner.js'
 import '../../Components/error.js'
 
 const main = () => {

@@ -14,16 +14,38 @@ module.exports = {
     //loader
     module: {
         rules: [
+            // {
+            //     test: /\.css$/,
+            //     use: [
+            //             {
+            //                 loader: "style-loader"
+            //             },
+            //             {
+            //                 loader: ['to-string-loader', 'css-loader']
+            //                 ,
+            //             options: {
+            //               esModule: false
+            //       }     
+            //             }
+            //     ]
+            // },
             {
-                test: /\.css$/,
-                use: [
-                        {
-                            loader: "style-loader"
-                        },
-                        {
-                            loader: "css-loader"
-                        }
-                ]
+              test: /\.css$/i,
+              exclude: /styles/,
+              use: [
+                      {
+                          loader: 'to-string-loader'
+                      },
+                      {
+                          loader: 'css-loader'    
+                      }
+              ]           
+            },
+            /* rules buat global style */
+            {
+              test: /\.css$/i,
+              include: /styles/,
+              use: ['style-loader', 'css-loader']
             },
             {
                 test: /\.(png|jpe?g|gif)$/i,
@@ -33,9 +55,13 @@ module.exports = {
                   },
                 ],
               },
+              // {
+              //   test: /.s?css$/,
+              //   use: [MiniCssExtractPlugin.loader, "css-loader"],
+              // },
               {
-                test: /.s?css$/,
-                use: [MiniCssExtractPlugin.loader, "css-loader"],
+                test: /\.html$/i,
+                use: ['html-loader']
               }
         ]
     },
