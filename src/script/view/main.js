@@ -60,7 +60,6 @@ const main = () => {
             }
         })
         if(dataQuran == ''){
-            // alert(`maaf ${searchText.value} tidak ditemukan`)
             Swal.fire({
                 text: `maaf ${searchText.value} tidak ditemukan`,
                 icon: 'error',
