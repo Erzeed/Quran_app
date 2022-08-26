@@ -1,4 +1,5 @@
 import { surah,juz } from "../Api/surahAPI";
+import Swal from 'sweetalert2'
 import '../../Components/card/card.js'
 import '../../Components/quran/quran.js'
 import '../../Components/loading/loading.js'
@@ -13,6 +14,7 @@ const main = () => {
     const banner = document.querySelector('banner-quran')
     const searchText = document.querySelector('.search input')
     const loading = document.querySelector('loading-roll')
+    const Swal = require('sweetalert2')
     
     const showData = async () => {
         try {
@@ -58,7 +60,12 @@ const main = () => {
             }
         })
         if(dataQuran == ''){
-            alert(`maaf ${searchText.value} tidak ditemukan`)
+            // alert(`maaf ${searchText.value} tidak ditemukan`)
+            Swal.fire({
+                text: `maaf ${searchText.value} tidak ditemukan`,
+                icon: 'error',
+                confirmButtonText: 'Ok'
+              })
         }else{
             card.surat = dataQuran
         }
@@ -73,8 +80,7 @@ const main = () => {
     window.addEventListener('click', event => {
         if(event.path[0].id != ''){
             getId(event)
-            window.location.href = 'quran/index.html'
-            
+            window.location.href = 'quran/index.html' 
         }
     })
 

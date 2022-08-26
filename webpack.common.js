@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 const path = require('path');
 
 module.exports = {
@@ -17,16 +17,8 @@ module.exports = {
             {
               test: /\.css$/i,
               exclude: /styles/,
-              use: [
-                      {
-                          loader: 'to-string-loader'
-                      },
-                      {
-                          loader: 'css-loader'    
-                      }
-              ]           
+              use: ['to-string-loader','css-loader' ]           
             },
-            /* rules buat global style */
             {
               test: /\.css$/i,
               include: /styles/,
@@ -34,26 +26,26 @@ module.exports = {
             },
             {
                 test: /\.(png|jpe?g|gif)$/i,
-                use: [
-                  {
-                    loader: 'file-loader',
-                  },
-                ],
+                use: ['file-loader' ]
               },
-              // {
-              //   test: /.s?css$/,
-              //   use: [MiniCssExtractPlugin.loader, "css-loader"],
-              // },
               {
                 test: /\.html$/i,
                 use: ['html-loader']
-              }
+              },
+              {
+                test: /\.js$/,        
+                enforce: 'pre',
+                use: ['source-map-loader'],
+              },
         ]
     },
     optimization: {
+        minimize: true,
         minimizer: [
-          new CssMinimizerPlugin(),
-        ],
+          new TerserPlugin({
+            test: /\.js(\?.*)?$/i,
+          }),
+        ],                                
       },
     //plugin
     plugins: [

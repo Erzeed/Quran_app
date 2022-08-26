@@ -133,7 +133,6 @@ class quran extends HTMLElement {
                 </div>
                 <div class="audio-quran">
                     <button> <img class="play" src='${play}' /> </button>
-                    
                 </div>
             </div>
                 
