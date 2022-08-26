@@ -9,7 +9,7 @@ export const surah = async () => {
         const {data} = resp
         return data;
     } catch (error) {
-        console.log(error)
+        
     }
 }
 
@@ -20,6 +20,6 @@ export const juz = async () => {
         const {data} = resp
         return data
     } catch (error) {
-        console.log(error)
+        
     }
 }
